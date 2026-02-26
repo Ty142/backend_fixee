@@ -9,7 +9,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# build
+# build output (will be generated on Render)
 dist/
 build/
 
@@ -17,9 +17,8 @@ build/
 .DS_Store
 Thumbs.db
 
+# Architecture docs (optional - remove these lines if you want to keep them)
 ARCHITECTURE_BLUEPRINT.md
 ARCHITECTURE_COMPLETION_REPORT.md
 ARCHITECTURE_VALIDATION_CHECKLIST.md
-DEPLOY.md
-RENDER_DEPLOY_CHECKLIST.md
-FIX_RENDER_PATH_ERROR.md
+*.md
