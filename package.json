@@ -2,12 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Backend API for EXE201 - Service Management Platform",
-  "main": "dist/server.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon --exec ts-node server.ts",
     "build": "tsc && echo Build completed successfully",
     "start:dev": "ts-node server.ts",
-    "postbuild": "dir dist",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
