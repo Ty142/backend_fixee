@@ -39,11 +39,16 @@ const startServer = async (): Promise<void> => {
   try {
     await connectDatabase();
     
-    app.listen(ENV.PORT, () => {
-      console.log(`🚀 Server running on port ${ENV.PORT}`);
+    const PORT = ENV.PORT;
+    const HOST = process.env.HOST || '0.0.0.0'; // Bind to all interfaces for Render
+    
+    app.listen(PORT, HOST, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
       console.log(`📡 Environment: ${ENV.NODE_ENV}`);
+      console.log(`🌐 Host: ${HOST}`);
     });
   } catch (error) {
+    console.error('❌ Failed to start server:', error);
     process.exit(1);
   }
 };
