@@ -1,0 +1,76 @@
+╔══════════════════════════════════════════════════════════════╗
+║          RENDER DEPLOY - QUICK FIX GUIDE                     ║
+╚══════════════════════════════════════════════════════════════╝
+
+🔴 ERROR: Cannot find module '/opt/render/project/src/dist/server.js'
+
+✅ SOLUTION: Set Root Directory in Render Dashboard
+
+┌──────────────────────────────────────────────────────────────┐
+│ 1. Go to Render Dashboard                                    │
+│    https://dashboard.render.com                              │
+│                                                              │
+│ 2. Select your backend service                              │
+│                                                              │
+│ 3. Click "Settings" (left sidebar)                          │
+│                                                              │
+│ 4. Scroll to "Build & Deploy" section                       │
+│                                                              │
+│ 5. Set Root Directory:                                      │
+│    ┌────────────────────────────────────┐                  │
+│    │ exe201/backend                     │                  │
+│    └────────────────────────────────────┘                  │
+│                                                              │
+│ 6. Verify commands:                                         │
+│    Build Command:  npm install && npm run build            │
+│    Start Command:  node dist/server.js                     │
+│                                                              │
+│ 7. Click "Save Changes"                                     │
+│                                                              │
+│ 8. Click "Manual Deploy" > "Deploy latest commit"          │
+└──────────────────────────────────────────────────────────────┘
+
+📋 ENVIRONMENT VARIABLES TO SET IN RENDER:
+
+Required:
+  ☐ NODE_ENV = production
+  ☐ PORT = 8080
+  ☐ MONGODB_URI = mongodb+srv://...
+  ☐ JWT_SECRET = (generate strong secret)
+  ☐ JWT_REFRESH_SECRET = (generate strong secret)
+  ☐ CORS_ORIGIN = https://your-frontend-url.com
+
+Optional:
+  ☐ HOST = 0.0.0.0
+  ☐ JWT_EXPIRES_IN = 1h
+  ☐ JWT_REFRESH_EXPIRES_IN = 7d
+  ☐ CLOUDINARY_CLOUD_NAME = ...
+  ☐ CLOUDINARY_API_KEY = ...
+  ☐ CLOUDINARY_API_SECRET = ...
+
+🧪 TEST AFTER DEPLOY:
+
+  curl https://your-app.onrender.com/api/health
+
+  Expected response:
+  {
+    "status": "success",
+    "message": "Server is running",
+    "timestamp": "2024-...",
+    "environment": "production"
+  }
+
+⚠️  IMPORTANT NOTES:
+
+  • Root Directory MUST be set to: exe201/backend
+  • This is because your project is a monorepo
+  • Without Root Directory, Render looks in wrong path
+  • Build creates dist/server.js (not src/dist/server.js)
+
+📚 MORE HELP:
+
+  • Full guide: FIX_RENDER_PATH_ERROR.md
+  • Checklist: RENDER_DEPLOY_CHECKLIST.md
+  • Render Docs: https://render.com/docs
+
+═══════════════════════════════════════════════════════════════

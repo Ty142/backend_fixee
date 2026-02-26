@@ -4,7 +4,7 @@ import v1Routes from './v1/index';
 const router = Router();
 
 // Health check endpoint for monitoring
-router.get('/health', (req, res) => {
+router.get('/health', (_req, res) => {
   res.status(200).json({
     status: 'success',
     message: 'Server is running',

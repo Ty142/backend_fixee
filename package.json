@@ -5,10 +5,10 @@
   "main": "dist/server.js",
   "scripts": {
     "dev": "nodemon --exec ts-node server.ts",
-    "build": "tsc && echo 'Build completed successfully'",
+    "build": "tsc && echo Build completed successfully",
     "start": "node dist/server.js",
     "start:dev": "ts-node server.ts",
-    "postbuild": "ls -la dist/",
+    "postbuild": "dir dist",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"

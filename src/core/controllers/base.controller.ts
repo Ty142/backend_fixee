@@ -20,7 +20,7 @@ export abstract class BaseController<T extends Document> {
     }
   }
 
-  async getAll(req: Request, res: Response): Promise<void> {
+  async getAll(_req: Request, res: Response): Promise<void> {
     try {
       const result = await this.service.getAll();
       sendSuccess(res, 'Retrieved successfully', result);

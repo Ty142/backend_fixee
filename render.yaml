@@ -4,6 +4,8 @@ services:
     env: node
     region: singapore
     plan: free
+    # IMPORTANT: If deploying from monorepo, Render needs to know the backend folder
+    # Set this in Render Dashboard: Settings > Root Directory = exe201/backend
     buildCommand: npm install && npm run build
     startCommand: node dist/server.js
     envVars:
