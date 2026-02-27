@@ -25,6 +25,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(loggerMiddleware);
 
+// Root welcome route
+app.get('/', (_req, res) => {
+  res.status(200).json({
+    status: 'success',
+    message: 'Fixee API Server',
+    version: '1.0.0',
+    endpoints: {
+      health: '/api/health',
+      auth: '/api/v1/auth',
+      documentation: 'https://github.com/your-repo/api-docs'
+    },
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // Routes
 app.use('/api', routes);
 
